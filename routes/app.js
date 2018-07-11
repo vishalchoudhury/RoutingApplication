@@ -39,13 +39,19 @@ server.listen(80,'127.0.0.1');
 
 const express = require('express');
 
+const bodyParser = require('body-parser');
+
 const fs = require('fs');
+
+const urlencodedParser = bodyParser.urlencoded({ extended: false });
 
 const app = express();
 
 app.set('view engine', 'ejs');
 
-app.use('assets',express.static('/assets'));
+app.use('/assets',express.static('assets'));
+
+//app.use(express.bodyParser());
 
 app.get('/',function(req,res) {
 	
@@ -60,8 +66,14 @@ app.get('/',function(req,res) {
 app.get('/contact',function(req,res) {
 	
 	//res.sendFile(__dirname+'/contact.html');
+	console.log(req.query);
+	res.render('contact', {qs: req.query});
 	
-	res.render('contact');
+});
+
+app.post('/contact',urlencodedParser, function(req,res) {
+	console.log(req.body);
+	res.render('contact-success', {data: req.body});
 	
 });
 

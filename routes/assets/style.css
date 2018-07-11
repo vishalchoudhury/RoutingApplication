@@ -2,3 +2,6 @@
   h1{font-size: 48px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
   h2{font-size: 38px; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
   p,li,ul{font-size: 16px; text-align: center;}
+  form{width: 400px; max-width: 100px; padding: 20px;margin : 20px auto;}
+  input,label{display: block; margin: 10px; padding: 5px; width: 100px;}
+  input[type='submit']{width: auto;}
